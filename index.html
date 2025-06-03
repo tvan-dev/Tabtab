@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/tabtab.css">
+</head>
+<body>
+    <ul id="tabs">
+        <li><a href="#tab-1">TAB 1</a></li>
+        <li><a href="#tab-2">TAB 2</a></li>
+        <li><a href="#tab-3">TAB 3</a></li>
+
+    </ul>
+    <div id="tab-1">
+        <h1>Tab 1</h1>
+        <p>This is the content of tab 1.</p>
+    </div>
+    <div id="tab-2">
+        <h1>Tab 2</h1>
+        <p>This is the content of tab 2.</p>
+    </div>
+    <div id="tab-3">
+        <h1>Tab 3</h1>
+        <p>This is the content of tab 3.</p>
+    </div>
+    <script src="./src/tabtab.js"></script>
+    <script>
+        const tabs = new Tabtab("#tabs")
+        // tabs.destroy()
+    </script>
+</body>
+</html>

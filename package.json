@@ -1,0 +1,8 @@
+{ "scripts": {
+  "minify": "terser src/tabtab.js -o tabtab.min.js && csso src/tabtab.css -o tabtab.min.css"
+},
+  "dependencies": {
+    "csso-cli": "^4.0.2",
+    "terser": "^5.40.0"
+  }
+}
