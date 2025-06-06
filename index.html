@@ -25,10 +25,40 @@
         <h1>Tab 3</h1>
         <p>This is the content of tab 3.</p>
     </div>
+
+    <!-- tab 2 -->
+    <ul id="tabs-ABC">
+        <li><a href="#tab-A">TAB A</a></li>
+        <li><a href="#tab-B">TAB B</a></li>
+        <li><a href="#tab-C">TAB C</a></li>
+
+    </ul>
+    <div id="tab-A">
+        <h1>Tab A</h1>
+        <p>This is the content of tab 1.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore natus, expedita suscipit ad sit delectus minima quas, tempora omnis, magni in autem dicta commodi cupiditate laudantium ducimus iure perspiciatis illo deserunt mollitia! Optio, odio culpa facilis ducimus quasi veritatis atque laudantium, unde recusandae aperiam dolor itaque fugit explicabo dolore dignissimos eaque repellendus! Illo sunt atque quidem cumque neque laboriosam. Quos non modi praesentium commodi officiis tenetur rem quae qui minima et atque culpa tempore neque perspiciatis ratione ea, quibusdam dolorem iusto error. Necessitatibus hic asperiores at repellat. Quaerat, maxime, quod, voluptatum architecto saepe iste veniam debitis ipsa quibusdam sapiente dicta expedita harum? Aperiam enim vero dolores ea cupiditate fugiat quae amet magni provident facere! Omnis, consequuntur illum odit ab rerum tempora tempore deserunt voluptatem. Facilis vitae ut at repellendus ea excepturi corrupti recusandae soluta eaque, omnis et nemo voluptatem saepe ullam quibusdam magni possimus cumque placeat neque deserunt? Obcaecati ex doloremque dolore sint, totam veniam enim ipsum assumenda. Debitis nobis vel odio enim amet sit pariatur unde minus alias accusantium! Laudantium deleniti ea autem, ex sunt est rem quasi illo nulla rerum, eos nemo at mollitia dolor esse maxime atque iusto cumque velit corporis quibusdam repellat. Ipsa deleniti qui nulla, fugiat, nisi optio cupiditate repellat consequuntur, veniam incidunt vitae? Expedita nobis molestias quas maiores perspiciatis provident fuga sint, explicabo eius magnam adipisci? Sapiente error vero, ipsum laudantium et illum ipsa aliquam possimus quas! Explicabo nulla culpa accusamus ipsam praesentium omnis ut fugit neque ex sed quod voluptatum sunt ducimus, eaque, aliquam veritatis error voluptas enim necessitatibus doloremque quasi porro! Aut reprehenderit expedita, id dolores consectetur incidunt eos laudantium numquam quo explicabo atque recusandae ratione eius ab sint temporibus officia odit fugiat blanditiis a ducimus. Voluptatibus est sit reiciendis a corporis dolorum atque illum commodi minus tenetur assumenda suscipit saepe autem ratione fugiat doloremque numquam voluptatum tempore, laudantium labore praesentium nam! Repudiandae optio nulla facere qui minima quisquam, unde, odit reprehenderit fugit vero eum ab minus ratione nesciunt totam! Ea quos aliquid nam dolorem cum magni fugit deleniti aperiam eum quisquam, quae ut tenetur ad veritatis alias consectetur placeat voluptates delectus dignissimos at cumque blanditiis similique. Eveniet, reprehenderit soluta maiores alias optio consequatur, porro ex repellat numquam ullam eligendi iste non eaque nemo, fuga quasi? Facere perferendis eos reprehenderit unde sit eveniet velit ipsam consequatur! Sint laudantium unde vitae odit, rerum sed, maxime suscipit in veritatis quos ea tenetur omnis neque provident eaque reiciendis soluta illum fuga earum error minus deleniti perspiciatis! Illum voluptates temporibus culpa perferendis porro, repellendus excepturi! Corrupti quos velit quis eos reprehenderit eius, sapiente sed mollitia cupiditate laudantium. Sequi commodi repudiandae dolorem tenetur aperiam optio praesentium. Porro voluptate quo perferendis, quasi rem reprehenderit deserunt dolorem. Vero accusantium molestiae consectetur reiciendis. Consectetur adipisci delectus officia commodi? Impedit tenetur provident odit vero quod laboriosam modi placeat tempore aperiam, rem nobis quam optio, alias quas nemo asperiores ipsa iusto? Modi exercitationem alias soluta, rem aliquam commodi ipsam beatae, minus explicabo aliquid quidem illo. Omnis, ipsa obcaecati vero maxime aut ab!
+        </p>
+    </div>
+    <div id="tab-B">
+        <h1>Tab B</h1>
+        <p>This is the content of tab 2.</p>
+    </div>
+    <div id="tab-C">
+        <h1>Tab C</h1>
+        <p>This is the content of tab 3.</p>
+    </div>
     <script src="./src/tabtab.js"></script>
     <script>
-        const tabs = new Tabtab("#tabs")
-        // tabs.destroy()
+        
+        const tabsABC = new Tabtab("#tabs-ABC", {
+            remember: true,
+            onChange: (tab) => {
+                console.log(`Tab changed to: ${tab}`);
+            },
+        })
+        const tabs = new Tabtab("#tabs", {
+            remember: true,
+        })
     </script>
 </body>
 </html>

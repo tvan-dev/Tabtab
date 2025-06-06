@@ -1,6 +1,6 @@
 
 
-function Tabtab(selector) {
+function Tabtab(selector, options = {}) {
     this.container = document.querySelector(selector);
     if(!this.container) {
         console.error(`Tabtab: Container with selector "${selector}" not found.`);
@@ -24,11 +24,31 @@ function Tabtab(selector) {
     
     if(this.tabs.length !== this.panels.length) return;
 
+    this.opt = Object.assign({
+        remember : false,
+    },options)
+    this.paramKey = selector.replace(/[^a-zA-Z0-9]/g, "");
     this._init()
 
 };
 
-Tabtab.prototype._activeTab = function(tab) {
+Tabtab.prototype._init = function() {
+
+    const params = new URLSearchParams(window.location.search);
+    let value = params.get(this.paramKey);
+    
+    const defaultTab = 
+        (this.opt.remember && value && this.tabs.find(tab => tab.getAttribute("href").replace(/[^a-zA-Z0-9]/g, "") === value)) || this.tabs[0]
+
+    this._activateTab(defaultTab);
+
+    this.tabs.forEach(tab => {
+        tab.onclick = (e) => this._handleTabClick(e, tab)
+    })
+
+};
+
+Tabtab.prototype._activateTab = function(tab) {
     this.tabs.forEach(tab => {
         tab.closest("li").classList.remove("tab--active")
     })
@@ -37,51 +57,48 @@ Tabtab.prototype._activeTab = function(tab) {
     this.panels.forEach(panel => panel.hidden = true);
     const panelActive = document.querySelector(`${tab.getAttribute("href")}`)
     panelActive.hidden = false;
-}
-
-Tabtab.prototype._init = function() {
-    const hashTab = location.hash;
-    let defaultTab = this.tabs[0]
     
-    this._activeTab(defaultTab);
+    if(this.opt.remember) {
+        const params = new URLSearchParams(window.location.search);
+        params.set(this.paramKey, tab.getAttribute("href").replace(/[^a-zA-Z0-9]/g, ""));
 
-    this.tabs.forEach(tab => {
-        tab.onclick = (e) => this._handleTabClick(e, tab)
-    })
+        history.replaceState(null,null, `?${params}`);
+    }
+
 };
 
 Tabtab.prototype._handleTabClick = function(e,tab) {
     e.preventDefault();
-    this._activeTab(tab);
+    this._activateTab(tab);
 };
 
 
 Tabtab.prototype.switch = function(input) {
-    let tabToActive = null;
+    let tabToActivate = null;
 
     if(!input) {
         console.error("Tabtab: No input provided to switch tabs.");
         return;
     }
     if(typeof input === "string") {
-        tabToActive =  this.tabs.find(tab => {
+        tabToActivate =  this.tabs.find(tab => {
             return tab.getAttribute("href") === input;
             ;
         })
-        if(!tabToActive) {
+        if(!tabToActivate) {
             console.error(`Tabtab: No tab found with href "${input}"`);
             return;
         }
     }
     else if (this.tabs.includes(input)) {
-        tabToActive = input
+        tabToActivate = input
     }
     
-    if(!tabToActive) {
+    if(!tabToActivate) {
         console.error(`Tabtab: No vailid input '${input}'`);
         return;
     }
-    this._activeTab(tabToActive);
+    this._activateTab(tabToActivate);
 
 }
 
