@@ -52,13 +52,14 @@
         
         const tabsABC = new Tabtab("#tabs-ABC", {
             remember: true,
-            onChange: (tab) => {
-                console.log(`Tab changed to: ${tab}`);
+            onChange: (data) => {
+                console.log(data);
             },
         })
         const tabs = new Tabtab("#tabs", {
             remember: true,
         })
+        // tabs.switch("tab-5");
     </script>
 </body>
 </html>
