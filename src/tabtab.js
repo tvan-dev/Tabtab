@@ -24,7 +24,7 @@ function Tabtab(selector, options = {}) {
     if(this.tabs.length !== this.panels.length) return;
 
     this.opt = Object.assign({
-        activeClassName: "tab--active",
+        activeClassName: "tabs--active",
         remember : false,
         onChange: null,
     },options)
@@ -55,8 +55,8 @@ Tabtab.prototype._init = function() {
 
 Tabtab.prototype.tryActiveTab = function(tab) {
     if(this._currentTab !== tab) {
-    this._activateTab(tab);
-    this._currentTab = tab;
+        this._currentTab = tab;
+        this._activateTab(tab);
     }
 };
 
